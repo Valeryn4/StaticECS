@@ -1,4 +1,4 @@
-#include "include/ECS/ECS.hpp"
+п»ї#include "include/ECS/ECS.hpp"
 #include <string>
 #include <iostream>
 #include <chrono>
@@ -7,11 +7,11 @@
 
 
 
-//Данные для компонента-слушателя
+//Р”Р°РЅРЅС‹Рµ РґР»СЏ РєРѕРјРїРѕРЅРµРЅС‚Р°-СЃР»СѓС€Р°С‚РµР»СЏ
 struct ListenerTargetData
 {
     std::string name =  "Target_0";
-    int i = 0;
+    int i = 0; 
 
     void Set(int v)
     {
@@ -20,7 +20,7 @@ struct ListenerTargetData
     }
 };
 
-//данные для компонента слушателя бродкастов
+//РґР°РЅРЅС‹Рµ РґР»СЏ РєРѕРјРїРѕРЅРµРЅС‚Р° СЃР»СѓС€Р°С‚РµР»СЏ Р±СЂРѕРґРєР°СЃС‚РѕРІ
 struct ListenerBrodcastData
 {
     std::string name = "Brodcast";
@@ -33,16 +33,16 @@ struct ListenerBrodcastData
     }
 };
 
-//Компонент слушателя одиночки
+//РљРѕРјРїРѕРЅРµРЅС‚ СЃР»СѓС€Р°С‚РµР»СЏ РѕРґРёРЅРѕС‡РєРё
 using ListenerTargetComp = StaticECS::Component<ListenerTargetData>;
-//компонент слушателя бродкастов
+//РєРѕРјРїРѕРЅРµРЅС‚ СЃР»СѓС€Р°С‚РµР»СЏ Р±СЂРѕРґРєР°СЃС‚РѕРІ
 using ListenerBrodcastComp = StaticECS::Component< ListenerBrodcastData>;
-//компонент event
+//РєРѕРјРїРѕРЅРµРЅС‚ event
 using EventComponent = StaticECS::EventComponent;
 
-//сущность генерирующая события и слушатель одиночка
+//СЃСѓС‰РЅРѕСЃС‚СЊ РіРµРЅРµСЂРёСЂСѓСЋС‰Р°СЏ СЃРѕР±С‹С‚РёСЏ Рё СЃР»СѓС€Р°С‚РµР»СЊ РѕРґРёРЅРѕС‡РєР°
 using Entity = StaticECS::EntityComp< EventComponent, ListenerTargetComp>;
-//сущность слушатель бродкастов и слушатель одиночка (ВНИМАНИЕ! МЫ СПЕЦИАЛЬНО ДОБАВИЛИ СЮДА СЛУШАТЕЛЯ-ОДИНОЧКУ! ДЛЯ ДЕМОНСТРАЦИИ)
+//СЃСѓС‰РЅРѕСЃС‚СЊ СЃР»СѓС€Р°С‚РµР»СЊ Р±СЂРѕРґРєР°СЃС‚РѕРІ Рё СЃР»СѓС€Р°С‚РµР»СЊ РѕРґРёРЅРѕС‡РєР° (Р’РќРРњРђРќРР•! РњР« РЎРџР•Р¦РРђР›Р¬РќРћ Р”РћР‘РђР’РР›Р РЎР®Р”Рђ РЎР›РЈРЁРђРўР•Р›РЇ-РћР”РРќРћР§РљРЈ! Р”Р›РЇ Р”Р•РњРћРќРЎРўР РђР¦РР)
 using Entity2 = StaticECS::EntityComp<ListenerBrodcastComp, ListenerTargetComp>;
 
 
@@ -50,17 +50,17 @@ using Entity2 = StaticECS::EntityComp<ListenerBrodcastComp, ListenerTargetComp>;
 
 int main()
 {
-    //создаем сущность, которая будет генерировать события
+    //СЃРѕР·РґР°РµРј СЃСѓС‰РЅРѕСЃС‚СЊ, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ СЃРѕР±С‹С‚РёСЏ
     Entity entity;
-    //создаем систему
+    //СЃРѕР·РґР°РµРј СЃРёСЃС‚РµРјСѓ
     StaticECS::SystemEvent system_;
 
-    //получаем указатели на компоненты бродкастера
+    //РїРѕР»СѓС‡Р°РµРј СѓРєР°Р·Р°С‚РµР»Рё РЅР° РєРѕРјРїРѕРЅРµРЅС‚С‹ Р±СЂРѕРґРєР°СЃС‚РµСЂР°
     auto listener = entity.GetComponentPtr<ListenerTargetComp>();
-    auto event = entity.GetComponentPtr<EventComponent>(); //компонент event, в который мы будем посылать кобытия
+    auto event = entity.GetComponentPtr<EventComponent>(); //РєРѕРјРїРѕРЅРµРЅС‚ event, РІ РєРѕС‚РѕСЂС‹Р№ РјС‹ Р±СѓРґРµРј РїРѕСЃС‹Р»Р°С‚СЊ РєРѕР±С‹С‚РёСЏ
 
 
-    //создаем 10 сущностей, которые будут ловить бродкасты, посылаемые в ListenerBrodcastComp
+    //СЃРѕР·РґР°РµРј 10 СЃСѓС‰РЅРѕСЃС‚РµР№, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ Р»РѕРІРёС‚СЊ Р±СЂРѕРґРєР°СЃС‚С‹, РїРѕСЃС‹Р»Р°РµРјС‹Рµ РІ ListenerBrodcastComp
     for (int i = 0; i < 10; ++i)
     {
         auto e = new Entity2();
@@ -68,7 +68,7 @@ int main()
     }
 
     
-    //Пусть это будет у наж GameLoop
+    //РџСѓСЃС‚СЊ СЌС‚Рѕ Р±СѓРґРµС‚ Сѓ РЅР°Р¶ GameLoop
     std::thread thread([listener, event, &system_]() 
     {
 
@@ -78,14 +78,14 @@ int main()
 
             auto parent = event->GetParent();
 
-            //отправляем три события в целевой компонент самому себе. Ключ является parent!
+            //РѕС‚РїСЂР°РІР»СЏРµРј С‚СЂРё СЃРѕР±С‹С‚РёСЏ РІ С†РµР»РµРІРѕР№ РєРѕРјРїРѕРЅРµРЅС‚ СЃР°РјРѕРјСѓ СЃРµР±Рµ. РљР»СЋС‡ СЏРІР»СЏРµС‚СЃСЏ parent!
             for (int z = 0; z < 3; ++z)
             {
                 
                 event->PushEvent([parent]()
                 {
-                    //так мы получаем компонент-слушатель, который принадлежит той же сущности, что и создает ивент
-                    //если такого компонента нет - получим nullptr
+                    //С‚Р°Рє РјС‹ РїРѕР»СѓС‡Р°РµРј РєРѕРјРїРѕРЅРµРЅС‚-СЃР»СѓС€Р°С‚РµР»СЊ, РєРѕС‚РѕСЂС‹Р№ РїСЂРёРЅР°РґР»РµР¶РёС‚ С‚РѕР№ Р¶Рµ СЃСѓС‰РЅРѕСЃС‚Рё, С‡С‚Рѕ Рё СЃРѕР·РґР°РµС‚ РёРІРµРЅС‚
+                    //РµСЃР»Рё С‚Р°РєРѕРіРѕ РєРѕРјРїРѕРЅРµРЅС‚Р° РЅРµС‚ - РїРѕР»СѓС‡РёРј nullptr
                     auto comp = ListenerTargetComp::Pool::Instance().GetComponent(parent); 
                     if (comp)
                     {
@@ -96,12 +96,12 @@ int main()
                 
             }
 
-            //отправляем событие-бродкаст, которео отправиться всем компонентам ListenerBrodcastComp
+            //РѕС‚РїСЂР°РІР»СЏРµРј СЃРѕР±С‹С‚РёРµ-Р±СЂРѕРґРєР°СЃС‚, РєРѕС‚РѕСЂРµРѕ РѕС‚РїСЂР°РІРёС‚СЊСЃСЏ РІСЃРµРј РєРѕРјРїРѕРЅРµРЅС‚Р°Рј ListenerBrodcastComp
             event->PushEvent([]() 
             {
                 auto& pool = ListenerBrodcastComp::Pool::Instance().GetPool();
 
-                //обратиет внимание! Что порядок перебора зависит от реализации std::unorder_map
+                //РѕР±СЂР°С‚РёРµС‚ РІРЅРёРјР°РЅРёРµ! Р§С‚Рѕ РїРѕСЂСЏРґРѕРє РїРµСЂРµР±РѕСЂР° Р·Р°РІРёСЃРёС‚ РѕС‚ СЂРµР°Р»РёР·Р°С†РёРё std::unorder_map
                 for (auto &&v : pool)
                 {
                     v.second->Set(v.second->i + 1);

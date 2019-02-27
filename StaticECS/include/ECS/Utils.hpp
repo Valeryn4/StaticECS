@@ -23,7 +23,7 @@ namespace StaticECS
         for_each_in_tuple(tuple, func, std::make_index_sequence<sizeof...(Ts)>());
     }
 
-    ///Спер со стак оверфлоу.
+    ///Спер со стак оверфлоу. 
     template <typename T, typename Tuple>
     struct has_type;
 

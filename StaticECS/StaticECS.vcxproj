@@ -126,6 +126,9 @@
     <ClInclude Include="include\ECS\System.hpp" />
     <ClInclude Include="include\ECS\Utils.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Example.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
