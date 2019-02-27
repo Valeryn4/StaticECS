@@ -6,7 +6,7 @@
 
 
 /*
-    Здесь лежит вспомогательный функционал и много шаблонной магии
+    В«РґРµСЃСЊ Р»РµР¶РёС‚ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ С„СѓРЅРєС†РёРѕРЅР°Р» Рё РјРЅРѕРіРѕ С€Р°Р±Р»РѕРЅРЅРѕР№ РјР°РіРёРё
 */
 namespace StaticECS
 {
@@ -23,7 +23,7 @@ namespace StaticECS
         for_each_in_tuple(tuple, func, std::make_index_sequence<sizeof...(Ts)>());
     }
 
-    ///Спер со стак оверфлоу. 
+    ///вЂ”РїРµСЂ СЃРѕ СЃС‚Р°Рє РѕРІРµСЂС„Р»РѕСѓ. 
     template <typename T, typename Tuple>
     struct has_type;
 
